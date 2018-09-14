@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生js实现一次滚动一屏</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        body{
+            margin: 0;
+        }
+        div{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div style="background-color: #1b6d85">
+    <div>这是第1屏</div>
+</div>
+<div style="background-color: #5cb85c">
+    <div>这是第2屏</div>
+</div>
+<div style="background-color: #8a6d3b">
+    <div>这是第3屏</div>
+</div>
+<div style="background-color: #337ab7">
+    <div>这是第4屏</div>
+</div>
+<div style="background-color: #66512c">
+    <div>这是第5屏</div>
+</div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded",function () {
+        var body = document.body;
+        var html = document.documentElement;
+        var itv,height = document.body.offsetHeight;
+        var page = scrollTop() / height | 0;
+        addEventListener("resize",onresize,false);
+        onresize();
+
+        //鼠标滚轮事件
+        document.body.addEventListener("onwheel" in document ? "wheel" : "mousewheel",function (e) {
+            clearTimeout(itv);
+            itv = setTimeout(function () {
+                //判断滚轮滚的方向
+                var delta = e.wheelDelta / 120 || -e.deltaY / 3;
+                page -= delta;
+                var max = (document.body.scrollHeight / height | 0) -1;
+                if (page < 0){
+                    return page = 0;
+                }
+                if (page > max){
+                    return page = max;
+                }
+                move();
+            },100);
+            e.preventDefault();
+        });
+        //当窗体发生变化时还是保证每次滚动滚一屏
+        function  onresize() {
+            height = body.offsetHeight;
+            move();
+        };
+
+        function  move() {
+            var value = height * page;
+            var diff = scrollTop() - value;
+            (function callee() {
+                diff = diff / 1.2 | 0;
+                scrollTop(value + diff);
+                if (diff){
+                    itv = setTimeout(callee,16);
+                }
+            })();
+        };
+
+        function scrollTop(v) {
+            if (v == null){
+                return Math.max(body.scrollTop,html.scrollTop);
+            }else{
+                body.scrollTop = html.scrollTop = v;
+            }
+        }
+    })
+</script>
+</html>
