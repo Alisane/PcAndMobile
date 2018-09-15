@@ -3,34 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <title>原生js实现一次滚动一屏</title>
+    <link rel="stylesheet" href="./css/newIndex.css">
     <style>
-        html,body{
-            height: 100%;
-        }
-        body{
-            margin: 0;
-        }
+
         div{
             height: 100%;
         }
+
     </style>
 </head>
 <body>
-<div style="background-color: #1b6d85">
-    <div>这是第1屏</div>
+<div class="db-content">
+    <header class="db-header">
+        <div class="header">
+            <div class="header-left">
+                <a href="#"><img src="./images/logo.png" alt=""><span> 豆瓣</span></a>
+                <span> 2017年度读书榜单</span>
+                <span class="header-share">分享给朋友</span>
+                <div class="sharing">
+                    <div>
+                        <p>分享到豆瓣</p>
+                        <p>分享到微博</p>
+                        <p>扫码分享到微信</p>
+                    </div>
+                    <div>
+                        <img src="./images/logo.png" alt="">
+                    </div>
+                </div>
+                <span> 共20.321，256人访问</span>
+            </div>
+            <div class="header-right">
+                <img src="data:image/gif;base64,R0lGODlhHAAcAPABAP///wAAACH5BAkeAAEAIf8LTkVUU0NBUEUyLjADAQAAACH/C0ltYWdlTWFnaWNrDWdhbW1hPTAuNDU0NTUALAAAAAAcABwAAAJPjI+py+0BIngUyvrkxE3zfn2LJypkiZyooaah0x6x+SazXbsRdd/6RttlcjJiEIgTwowWZVKD/DGgzB41WnT+rNosdFq9grss8ShMXqkZBQAh+QQJHgABACH/C0ltYWdlTWFnaWNrDWdhbW1hPTAuNDU0NTUALAAAAAAcABwAAAJGjI+py+0PDZggPlptw3rTznCgIo5IaUrYZ67s6E5pnMHxfLe57eL9gjrtEsEDLfQiDoUy4NKYZK6QTdJTVVX+rFlp6qspAAAh+QQJHgABACH/C0ltYWdlTWFnaWNrDWdhbW1hPTAuNDU0NTUALAAAAAAcABwAAAJQjI+py+1vgAQQTlrdzXrytn1LKCZkeZxooKbe00ZvJzGxOeM1nCO333PtaBjFT1jUXZLAofIGXTqbTGR0ag3KsNulTcuSVrtfaXkc5q7WjAIAOw==" alt="">
+                <span style="width:301px">A l'hombre - Ludovico Einaudi / Ballake Sissoko</span>
+                <audio autoplay loop>
+                    <source src="https://mr3.doubanio.com/e210565f261811b8beb833f00357df1b/0/fm/song/p1977748_128k.mp4" type="audio/ogg">
+                </audio>
+                <button class="header-menu">目录</button>
+            </div>
+        </div>
+    </header>
+    <div class="db-center">
+        <!--首页-->
+        <div class="item">
+            <div class="center-video">
+                <video loop autoplay   >
+                    <source src="./images/book_annual.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="center-bgImg"></div>
+            <div class="center-textImg">
+                <img src="./images/textImg.png">
+                <img class="textImg-small" src="./images/book.png">
+            </div>
+            <!--<div class="center-time">首页文字</div>-->
+        </div>
+        <!--第二页-->
+        <div class="item">
+            <div class="item-bgImgOne">
+                <div class="item-left">
+                    <div class="item-left-l">
+                        <a href="#" arget="_blank">
+                            <img style="width: 150px; height: 220px;" src="./images/second.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="item-left-r">
+                        <h1>2017年度</h1>
+                        <h1>高分图书</h1>
+                        <div class="splitLine" ></div>
+                        <section>
+                            <header>
+                                <h2><span class="ranking">Top 1</span><a href="">新名字的故事</a></h2>
+                            </header>
+                            <span>[意] 埃莱娜·费兰特</span>
+                            <p><span style="color:orange">★★★★★</span><span> 9.0</span><span> 965人评价</span></p>
+                            <p>我很真诚的讲：作者用极其扎实的故事告诉了女人们，为什么不能太早结婚以及为什么要坚持上学读书……（一本真正的女性主义小说荞麦</p>
+                        </section>
+                    </div>
+                </div>
+                <div class="item-right">
+                    <ul class="item-right-ul">
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two1.jpg" alt=""></div>
+                                <div>2</div>
+                                <p>鱼王 </p>
+                                <p>9.0</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two2.jpg" alt=""></div>
+                                <div>3</div>
+                                <p>不可思议的朋友 </p>
+                                <p>9.0</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two3.jpg" alt=""></div>
+                                <div>4</div>
+                                <p>杀死一只知更鸟</p>
+                                <p>9.2</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two4.jpg" alt=""></div>
+                                <div>5</div>
+                                <p>步履不停 </p>
+                                <p>8.7</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two5.jpg" alt=""></div>
+                                <div>6</div>
+                                <p>长夜难明</p>
+                                <p>8.6</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two6.jpg" alt=""></div>
+                                <div>7</div>
+                                <p>小说课 </p>
+                                <p>8.6</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div style=""><img style="width: 86px; height: 122px;" src="./images/two7.jpg" alt=""></div>
+                                <div style="">8</div>
+                                <p>外婆的道歉信 </p>
+                                <p>8.0</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div style=""><img style="width: 86px; height: 122px;" src="./images/two8.jpg" alt=""></div>
+                                <div style="">9</div>
+                                <p>我的职业是小说家 </p>
+                                <p>8.3</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div style=""><img style="width: 86px; height: 122px;" src="./images/two9.jpg" alt=""></div>
+                                <div style="">10</div>
+                                <p>世界的凛冬</p>
+                                <p>8.9</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item-comment">
+                    <span>共635条评论</span>
+                    <div>
+                        <form action="">
+                         <input type="text" placeholder="发表一下你的看法">
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!--第三页-->
+        <div class="item">
+            <div class="item-bgImgTwo">
+                <div class="item-center">
+                    <p>
+                        <span style="background: #B6BABD">这个世
+                            界上的每样东西都生死未定，都充满了风险
+                            ，那些不接受风险的人，那些不了解命运的
+                            人，在角落里日渐衰落。
+                        </span>
+                        我忽然明白为什么我没能拥有尼诺，而莉拉能够拥有他。我不能追随那些真实的感情，我无法使自己打破陈规旧矩
+                        ，我没有莉拉那么强烈的情感，她可以不顾一切去享受那一天一夜。
+                    </p>
+                    <a href="">—— 《新名字的故事》</a>
+                </div>
+            </div>
+        </div>
+        <!--<div style="background-color: #8a6d3b">-->
+            <!--<div>这是第3屏</div>-->
+        <!--</div>-->
+        <!--<div style="background-color: #337ab7">-->
+            <!--<div>这是第4屏</div>-->
+        <!--</div>-->
+        <!--<div style="background-color: #66512c">-->
+            <!--<div>这是第5屏</div>-->
+        <!--</div>-->
+    </div>
+
 </div>
-<div style="background-color: #5cb85c">
-    <div>这是第2屏</div>
-</div>
-<div style="background-color: #8a6d3b">
-    <div>这是第3屏</div>
-</div>
-<div style="background-color: #337ab7">
-    <div>这是第4屏</div>
-</div>
-<div style="background-color: #66512c">
-    <div>这是第5屏</div>
-</div>
+
 </body>
 <script>
     document.addEventListener("DOMContentLoaded",function () {
@@ -56,7 +223,7 @@
                     return page = max;
                 }
                 move();
-            },100);
+            },500);
             e.preventDefault();
         });
         //当窗体发生变化时还是保证每次滚动滚一屏
@@ -85,5 +252,6 @@
             }
         }
     })
+
 </script>
 </html>

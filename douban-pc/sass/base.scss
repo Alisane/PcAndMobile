@@ -1,11 +1,13 @@
 html,body {
   height: 100%;
   overflow: hidden;
+  font-size: 13px;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,PingFang SC,Hiragino Sans GB,STHeiti,Microsoft Yahei,Wenquanyi Micro Hei,sans-serif;
 }
-html,boody,input,ul,li,p,span,video {
+html,body,input,ul,li,p,span,video,h1,h2 {
   margin: 0;
   padding: 0;
-  font-size: 14px;
+
 }
 a {
   display: inline-block;
