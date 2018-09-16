@@ -13,13 +13,18 @@ a {
   display: inline-block;
   text-decoration: none;
   color: white; }
-  a:visited {
+  a:hover {
+    cursor: pointer;
     color: white; }
 
 /*背景视频的高度*/
 /*网站字体颜色*/
+div {
+  height: 100%; }
+
 .db-content {
-  width: 100%;
+  min-width: 910px;
+  height: 100%;
   /*豆瓣头部样式*/ }
   .db-content .db-header {
     position: fixed;
@@ -39,23 +44,50 @@ a {
       .db-content .db-header .header span {
         padding: 0px 3px; }
       .db-content .db-header .header .header-left {
-        padding: 10px 0px;
-        display: flex; }
+        display: flex;
+        align-items: center; }
         .db-content .db-header .header .header-left a {
-          display: flex; }
+          display: flex;
+          align-items: center;
+          /*弹性盒子垂直居中法*/ }
           .db-content .db-header .header .header-left a img {
             width: 15px;
             height: 15px; }
         .db-content .db-header .header .header-left .sharing {
-          display: none;
           position: absolute;
           top: 40px;
-          left: 323px;
-          background-color: rgba(0, 0, 0, 0.7); }
+          left: 314px;
+          height: 101px;
+          background-color: rgba(0, 0, 0, 0.7);
+          padding: 20px;
+          line-height: 2.0;
+          border-radius: 7px;
+          display: none; }
+          .db-content .db-header .header .header-left .sharing div {
+            display: flex; }
+            .db-content .db-header .header .header-left .sharing div div:first-of-type {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between; }
+              .db-content .db-header .header .header-left .sharing div div:first-of-type i {
+                margin-right: 5px; }
+            .db-content .db-header .header .header-left .sharing div div:last-of-type {
+              width: 101px;
+              height: 101px;
+              margin-left: 34px; }
+              .db-content .db-header .header .header-left .sharing div div:last-of-type:before {
+                content: '';
+                height: 101px;
+                border-left: 1px solid #B6BABD;
+                position: absolute;
+                left: 147px; }
+              .db-content .db-header .header .header-left .sharing div div:last-of-type img {
+                width: 100%;
+                height: 100%; }
         .db-content .db-header .header .header-left .header-share {
           cursor: pointer; }
           .db-content .db-header .header .header-left .header-share:hover .sharing {
-            display: flex; }
+            display: block; }
       .db-content .db-header .header .header-right {
         display: flex;
         align-items: center; }
@@ -75,8 +107,13 @@ a {
       overflow: hidden;
       height: 100%;
       /*首页样式*/
-      /*第二页样式*/
-      /*第三页样式*/ }
+      /*利用混合,将图片的路径传入*/
+      /*左右布局的整体公共样式*/
+      /*发表评论样式*/
+      /*第二页样式-传入对应背景图片和颜色*/
+      /*第三页样式-传入对应背景图片和颜色*/
+      /*第四页样式-传入对应背景图片和颜色*/
+      /*中心布局的整体公共样式*/ }
       .db-content .db-center .item .center-video {
         width: 100%;
         height: 100%; }
@@ -102,35 +139,41 @@ a {
           position: absolute;
           top: 0px;
           left: 0px; }
-      .db-content .db-center .item .item-bgImgOne {
+      .db-content .db-center .item .center-text {
+        width: 531px;
+        height: 50px;
+        position: absolute;
+        top: 93%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ddd; }
+      .db-content .db-center .item .item-bgImg {
         height: 100%;
-        background: url("../images/second.png");
         background-size: 100% 100%;
         display: flex;
         justify-content: center;
         align-items: center; }
-        .db-content .db-center .item .item-bgImgOne .item-left {
+        .db-content .db-center .item .item-bgImg .item-left {
           width: 490px;
           height: 250px;
-          background-color: rgba(89, 137, 120, 0.8);
           padding: 20px;
           border-radius: 7px;
-          margin-top: -50px;
+          margin-top: -101px;
           margin-right: 35px;
           display: flex; }
-          .db-content .db-center .item .item-bgImgOne .item-left .item-left-r {
+          .db-content .db-center .item .item-bgImg .item-left .item-left-r {
             padding: 0px 0px 0px 20px;
             flex: 1;
             color: white;
             overflow: hidden; }
-            .db-content .db-center .item .item-bgImgOne .item-left .item-left-r h1 {
+            .db-content .db-center .item .item-bgImg .item-left .item-left-r h1 {
               font-weight: 400; }
-            .db-content .db-center .item .item-bgImgOne .item-left .item-left-r .splitLine {
+            .db-content .db-center .item .item-bgImg .item-left .item-left-r .splitLine {
               width: 100%;
               height: 1px;
               border-top: 1px solid white;
               margin: 18px 0px 15px 0px; }
-            .db-content .db-center .item .item-bgImgOne .item-left .item-left-r .ranking {
+            .db-content .db-center .item .item-bgImg .item-left .item-left-r .ranking {
               display: inline-block;
               font-size: 1.5rem;
               font-weight: 400;
@@ -141,23 +184,23 @@ a {
               margin-bottom: .3rem;
               margin-right: .5rem;
               color: white; }
-            .db-content .db-center .item .item-bgImgOne .item-left .item-left-r section span, .db-content .db-center .item .item-bgImgOne .item-left .item-left-r section p {
+            .db-content .db-center .item .item-bgImg .item-left .item-left-r section span, .db-content .db-center .item .item-bgImg .item-left .item-left-r section p {
               margin-top: 7px; }
-            .db-content .db-center .item .item-bgImgOne .item-left .item-left-r section p:last-of-type {
+            .db-content .db-center .item .item-bgImg .item-left .item-left-r section p:last-of-type {
               height: 66.5px;
               line-height: 1.7;
               overflow: hidden;
               font-size: 12px;
               color: rgba(255, 255, 255, 0.6); }
-        .db-content .db-center .item .item-bgImgOne .item-right {
+        .db-content .db-center .item .item-bgImg .item-right {
           width: 472px;
           height: 522px; }
-          .db-content .db-center .item .item-bgImgOne .item-right .item-right-ul {
+          .db-content .db-center .item .item-bgImg .item-right .item-right-ul {
             flex-wrap: wrap;
             justify-content: space-around;
             align-content: flex-start;
-            margin-top: 91px; }
-            .db-content .db-center .item .item-bgImgOne .item-right .item-right-ul li {
+            margin-top: 66px; }
+            .db-content .db-center .item .item-bgImg .item-right .item-right-ul li {
               display: inline-block;
               position: relative;
               width: 142px;
@@ -166,20 +209,20 @@ a {
               margin-bottom: 55px;
               background: rgba(0, 0, 0, 0.5);
               border-radius: 7px; }
-              .db-content .db-center .item .item-bgImgOne .item-right .item-right-ul li div:first-of-type {
+              .db-content .db-center .item .item-bgImg .item-right .item-right-ul li div:first-of-type {
                 position: absolute;
                 bottom: 46px;
                 margin-left: 15px; }
-              .db-content .db-center .item .item-bgImgOne .item-right .item-right-ul li div:last-of-type {
+              .db-content .db-center .item .item-bgImg .item-right .item-right-ul li div:last-of-type {
                 position: absolute;
                 right: 18px;
                 top: 3px;
                 font-size: 15px; }
-              .db-content .db-center .item .item-bgImgOne .item-right .item-right-ul li p {
+              .db-content .db-center .item .item-bgImg .item-right .item-right-ul li p {
                 position: absolute;
                 margin-left: 15px;
                 font-size: 15px; }
-              .db-content .db-center .item .item-bgImgOne .item-right .item-right-ul li p:first-of-type {
+              .db-content .db-center .item .item-bgImg .item-right .item-right-ul li p:first-of-type {
                 width: 120px;
                 height: 20px;
                 bottom: 24px;
@@ -188,53 +231,67 @@ a {
                 /*文本不换行*/
                 text-overflow: ellipsis;
                 /*影藏的部分用...表示*/ }
-              .db-content .db-center .item .item-bgImgOne .item-right .item-right-ul li p:last-of-type {
+              .db-content .db-center .item .item-bgImg .item-right .item-right-ul li p:last-of-type {
                 bottom: 5px;
                 color: #f6a623; }
-        .db-content .db-center .item .item-bgImgOne .item-comment {
-          width: 531px;
-          height: 50px;
-          position: absolute;
-          bottom: 80px;
-          color: white;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end; }
-          .db-content .db-center .item .item-bgImgOne .item-comment span::before {
-            content: '';
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 6px;
-            margin-left: 15px;
-            width: 16px;
-            height: 14px;
-            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAjRJREFUaAXtmbtKA1EQho3GeG0shKCFIIKIjYg2IimMFwQb04oPIFY+gDY+ghZaWNqIWHhB0FYsxCJtihSCGhRjAhZeEOM3wZV1XSPJCcks7MCf3Zxz5pz/n5kNYbamxrfqRiBQ7PG5XK4en37QAcIgCMppT2x2C5KBQOC6bBtDPAK2QQZUyuIctAzaShaCczc4BNW0Rw5fAsVVDA5jIA202B5EWuzZ+FMRC8dZeAzKXeP280u5P8MpyvPxJs61bjtAvofxHaCNvNAdBRtyI+aaAQScMDeRX6H3Y4osnPwSAHkhLgK0WxyCg24ltKCd+Re/Aa4jdXayRL+R75sgZB9XfJ92ZmAQsj9+phSTF2oRpwD5e+Al63QKkP82XrKwU4DG3/1CAQ06BRRarHLOF1DttPgZ8DNgGAG/hAwDaOzuZ8A4hIYb+BkwDKCxu9czkPW6gJTXBSS8LuDAKaDB+Kmq3AYvHLXvFBCt3PnGJ63T2Hr4bmzRUpEW9h2Q/r92E559CMjYMzDDoBfIS1M3JuQlynYBMRlQblL3c5A/t3jmS4jyaWbgATRZEwqvN3CSyF/YuVkZmGZQK3l5Z7YCep3kRYjVB5qVLyXYKz73JfgVchHCKZAER+AU4s9c3Y3yCYEsKMZSLJaXb+3uu1ZwFBKTRTC/ZO080NO9hszqPwLemd8F8mpHnckz8Fc7PcvcFlijBq/UMbcIEdkh8AEsS3CzCFqtNeqvkO0CUtvD6sn6BJVF4BML/aXBGCS5AQAAAABJRU5ErkJggg==) 50%/contain no-repeat; }
-          .db-content .db-center .item .item-bgImgOne .item-comment div {
-            display: flex; }
-            .db-content .db-center .item .item-bgImgOne .item-comment div input {
-              width: 510px;
-              height: 30px;
-              border: none;
-              padding-left: 20px;
-              border-radius: 5px;
-              text-align: center; }
-      .db-content .db-center .item .item-bgImgTwo {
+      .db-content .db-center .item .item-comment {
+        width: 640px;
+        height: 30px;
+        position: absolute;
+        bottom: 18px;
+        color: white;
+        display: flex;
+        align-items: flex-end; }
+        .db-content .db-center .item .item-comment span::before {
+          content: '';
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 6px;
+          margin-left: 15px;
+          width: 16px;
+          height: 14px;
+          background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAjRJREFUaAXtmbtKA1EQho3GeG0shKCFIIKIjYg2IimMFwQb04oPIFY+gDY+ghZaWNqIWHhB0FYsxCJtihSCGhRjAhZeEOM3wZV1XSPJCcks7MCf3Zxz5pz/n5kNYbamxrfqRiBQ7PG5XK4en37QAcIgCMppT2x2C5KBQOC6bBtDPAK2QQZUyuIctAzaShaCczc4BNW0Rw5fAsVVDA5jIA202B5EWuzZ+FMRC8dZeAzKXeP280u5P8MpyvPxJs61bjtAvofxHaCNvNAdBRtyI+aaAQScMDeRX6H3Y4osnPwSAHkhLgK0WxyCg24ltKCd+Re/Aa4jdXayRL+R75sgZB9XfJ92ZmAQsj9+phSTF2oRpwD5e+Al63QKkP82XrKwU4DG3/1CAQ06BRRarHLOF1DttPgZ8DNgGAG/hAwDaOzuZ8A4hIYb+BkwDKCxu9czkPW6gJTXBSS8LuDAKaDB+Kmq3AYvHLXvFBCt3PnGJ63T2Hr4bmzRUpEW9h2Q/r92E559CMjYMzDDoBfIS1M3JuQlynYBMRlQblL3c5A/t3jmS4jyaWbgATRZEwqvN3CSyF/YuVkZmGZQK3l5Z7YCep3kRYjVB5qVLyXYKz73JfgVchHCKZAER+AU4s9c3Y3yCYEsKMZSLJaXb+3uu1ZwFBKTRTC/ZO080NO9hszqPwLemd8F8mpHnckz8Fc7PcvcFlijBq/UMbcIEdkh8AEsS3CzCFqtNeqvkO0CUtvD6sn6BJVF4BML/aXBGCS5AQAAAABJRU5ErkJggg==) 50%/contain no-repeat; }
+        .db-content .db-center .item .item-comment div {
+          display: flex; }
+          .db-content .db-center .item .item-comment div input {
+            width: 510px;
+            height: 30px;
+            border: none;
+            padding-left: 20px;
+            border-radius: 5px;
+            text-align: center; }
+      .db-content .db-center .item .second {
+        background: url("../images/secondBg.png"); }
+        .db-content .db-center .item .second .item-left {
+          background-color: rgba(89, 137, 120, 0.8); }
+      .db-content .db-center .item .tired {
+        background: url("../images/thiredBg.png"); }
+        .db-content .db-center .item .tired .item-left {
+          background-color: white; }
+      .db-content .db-center .item .fourth {
+        background: url("../images/fourthBg.png"); }
+        .db-content .db-center .item .fourth .item-left {
+          background-color: rgba(158, 89, 20, 0.8); }
+      .db-content .db-center .item .item-bgImg {
         width: 100%;
         height: 100%;
-        background: url("../images/thiredBg.png") no-repeat;
         background-size: 100% 100%;
         display: flex;
-        justify-content: center;
-        align-items: center; }
-        .db-content .db-center .item .item-bgImgTwo .item-center {
+        justify-content: center; }
+        .db-content .db-center .item .item-bgImg .item-center {
           width: 240px;
           height: 300px;
           font-family: STFangsong,Fangsong,FangSong_GB2312,STSong,serif;
           text-align: justify;
           font-size: 15px;
           color: #555;
-          box-sizing: border-box; }
-          .db-content .db-center .item .item-bgImgTwo .item-center p {
-            line-height: 2.0; }
+          box-sizing: border-box;
+          margin-left: 12px;
+          margin-top: -60px; }
+          .db-content .db-center .item .item-bgImg .item-center p {
+            line-height: 2.5; }
+          .db-content .db-center .item .item-bgImg .item-center a {
+            color: #555;
+            padding-left: 85px; }
 
 /*# sourceMappingURL=newIndex.css.map */

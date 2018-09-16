@@ -2,10 +2,13 @@
 @import "base.scss";
 /*背景视频的高度*/
 /*网站字体颜色*/
+div {
+  height: 100%;
+}
 $font-color: white;
 .db-content {
-  width: 100%;
-  //height: 100%;
+  min-width: 910px;
+  height: 100%;
   /*豆瓣头部样式*/
   .db-header {
     position: fixed;
@@ -25,28 +28,61 @@ $font-color: white;
         padding: 0px 3px;
       }
       .header-left {
-        padding: 10px 0px;
         display: flex;
+        align-items: center;
         a {
           display: flex;
-          //align-items: center;/*弹性盒子垂直居中法*/
+          align-items: center;/*弹性盒子垂直居中法*/
           img {
             width: 15px;
             height: 15px;
           }
         }
         .sharing {
-          display:none;
+
           position: absolute;
           top: 40px;
-          left: 323px;
+          left: 314px;
+          height: 101px;
           background-color:rgba(0,0,0,.7) ;
-        }
+          padding: 20px;
+          line-height: 2.0;
+          border-radius: 7px;
+          //z-index: 100;
+          display:none;
+          div {
+            display: flex;
+            div:first-of-type {
+              display: flex;
+              flex-direction: column;
+              justify-content:space-between;
+              i {
+                margin-right: 5px;
+              }
+            }
+            div:last-of-type {
+              width: 101px;
+              height:101px;
+              margin-left: 34px;
+              &:before {
+                content: '';
+                height: 101px;
+                border-left: 1px solid #B6BABD;
+                position: absolute;
+                left: 147px;
+              }
+              img {
+                width: 100%;
+                height:100%;
+              }
+            }
+          }
+          }
+
         .header-share {
           cursor: pointer;
           &:hover .sharing{
-
-            display: flex;
+            display: block;
           }
         }
       }
@@ -105,10 +141,27 @@ $font-color: white;
           left:0px;
         }
       }
-      /*第二页样式*/
-      .item-bgImgOne {
+      .center-text {
+        width: 531px;
+        height: 50px;
+        position: absolute;
+        top:93%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        color:#ddd;
+      }
+
+      /*利用混合,将图片的路径传入*/
+     @mixin link-url ($url,$color) {
+        background: url($url);
+       .item-left {
+         background-color:$color;
+       }
+      }
+
+      /*左右布局的整体公共样式*/
+      .item-bgImg {
         height: 100%;
-        background: url("../images/second.png");
         background-size: 100% 100%;
         display: flex;
         justify-content: center;
@@ -116,10 +169,9 @@ $font-color: white;
         .item-left {
           width: 490px;
           height: 250px;
-          background-color: rgba(89, 137, 120, 0.8);
           padding: 20px;
           border-radius: 7px;
-          margin-top: -50px;
+          margin-top: -101px;
           margin-right: 35px;
           display: flex;
           .item-left-l {
@@ -173,7 +225,7 @@ $font-color: white;
             flex-wrap: wrap;
             justify-content: space-around;
             align-content: flex-start;
-            margin-top: 91px;
+            margin-top: 66px;
             li {
               display: inline-block;
               position: relative;
@@ -214,51 +266,66 @@ $font-color: white;
             }
           }
         }
-        .item-comment {
-          width: 531px;
-          height: 50px;
-          position: absolute;
-          bottom:80px;
-          //left: 164px;
-          //border: 1px solid salmon;
-          color: $font-color;
-          //background-color: white;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          span::before {
-            content: '';
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 6px;
-            margin-left: 15px;
-            width: 16px;
-            height: 14px;
-            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAjRJREFUaAXtmbtKA1EQho3GeG0shKCFIIKIjYg2IimMFwQb04oPIFY+gDY+ghZaWNqIWHhB0FYsxCJtihSCGhRjAhZeEOM3wZV1XSPJCcks7MCf3Zxz5pz/n5kNYbamxrfqRiBQ7PG5XK4en37QAcIgCMppT2x2C5KBQOC6bBtDPAK2QQZUyuIctAzaShaCczc4BNW0Rw5fAsVVDA5jIA202B5EWuzZ+FMRC8dZeAzKXeP280u5P8MpyvPxJs61bjtAvofxHaCNvNAdBRtyI+aaAQScMDeRX6H3Y4osnPwSAHkhLgK0WxyCg24ltKCd+Re/Aa4jdXayRL+R75sgZB9XfJ92ZmAQsj9+phSTF2oRpwD5e+Al63QKkP82XrKwU4DG3/1CAQ06BRRarHLOF1DttPgZ8DNgGAG/hAwDaOzuZ8A4hIYb+BkwDKCxu9czkPW6gJTXBSS8LuDAKaDB+Kmq3AYvHLXvFBCt3PnGJ63T2Hr4bmzRUpEW9h2Q/r92E559CMjYMzDDoBfIS1M3JuQlynYBMRlQblL3c5A/t3jmS4jyaWbgATRZEwqvN3CSyF/YuVkZmGZQK3l5Z7YCep3kRYjVB5qVLyXYKz73JfgVchHCKZAER+AU4s9c3Y3yCYEsKMZSLJaXb+3uu1ZwFBKTRTC/ZO080NO9hszqPwLemd8F8mpHnckz8Fc7PcvcFlijBq/UMbcIEdkh8AEsS3CzCFqtNeqvkO0CUtvD6sn6BJVF4BML/aXBGCS5AQAAAABJRU5ErkJggg==) 50%/contain no-repeat;
+      }
+
+      /*发表评论样式*/
+      .item-comment {
+        width: 640px;
+        height: 30px;
+        position: absolute;
+        bottom:18px;
+        //left: 10%;
+        //border: 1px solid salmon;
+        color: $font-color;
+        //background-color: white;
+        display: flex;
+        //flex-direction: column;
+        align-items: flex-end;
+        span::before {
+          content: '';
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 6px;
+          margin-left: 15px;
+          width: 16px;
+          height: 14px;
+          background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAjRJREFUaAXtmbtKA1EQho3GeG0shKCFIIKIjYg2IimMFwQb04oPIFY+gDY+ghZaWNqIWHhB0FYsxCJtihSCGhRjAhZeEOM3wZV1XSPJCcks7MCf3Zxz5pz/n5kNYbamxrfqRiBQ7PG5XK4en37QAcIgCMppT2x2C5KBQOC6bBtDPAK2QQZUyuIctAzaShaCczc4BNW0Rw5fAsVVDA5jIA202B5EWuzZ+FMRC8dZeAzKXeP280u5P8MpyvPxJs61bjtAvofxHaCNvNAdBRtyI+aaAQScMDeRX6H3Y4osnPwSAHkhLgK0WxyCg24ltKCd+Re/Aa4jdXayRL+R75sgZB9XfJ92ZmAQsj9+phSTF2oRpwD5e+Al63QKkP82XrKwU4DG3/1CAQ06BRRarHLOF1DttPgZ8DNgGAG/hAwDaOzuZ8A4hIYb+BkwDKCxu9czkPW6gJTXBSS8LuDAKaDB+Kmq3AYvHLXvFBCt3PnGJ63T2Hr4bmzRUpEW9h2Q/r92E559CMjYMzDDoBfIS1M3JuQlynYBMRlQblL3c5A/t3jmS4jyaWbgATRZEwqvN3CSyF/YuVkZmGZQK3l5Z7YCep3kRYjVB5qVLyXYKz73JfgVchHCKZAER+AU4s9c3Y3yCYEsKMZSLJaXb+3uu1ZwFBKTRTC/ZO080NO9hszqPwLemd8F8mpHnckz8Fc7PcvcFlijBq/UMbcIEdkh8AEsS3CzCFqtNeqvkO0CUtvD6sn6BJVF4BML/aXBGCS5AQAAAABJRU5ErkJggg==) 50%/contain no-repeat;
         }
-          div {
-            display: flex;
-            input {
-              width: 510px;
-              height: 30px;
-              border: none;
-              padding-left: 20px;
-              border-radius: 5px;
-              text-align: center;
-            }
+        div {
+          display: flex;
+          input {
+            width: 510px;
+            height: 30px;
+            border: none;
+            padding-left: 20px;
+            border-radius: 5px;
+            text-align: center;
           }
         }
-
       }
-      /*第三页样式*/
-      .item-bgImgTwo {
+
+      /*第二页样式-传入对应背景图片和颜色*/
+      .second {
+        @include link-url("../images/secondBg.png",rgba(89, 137, 120, 0.8));
+      }
+
+      /*第三页样式-传入对应背景图片和颜色*/
+      .tired {
+        @include link-url("../images/thiredBg.png",white);
+      }
+
+      /*第四页样式-传入对应背景图片和颜色*/
+      .fourth {
+        @include link-url("../images/fourthBg.png",rgba(158, 89, 20, 0.8));
+      }
+
+      /*中心布局的整体公共样式*/
+      .item-bgImg {
         width: 100%;
         height: 100%;
-        background: url("../images/thiredBg.png")  no-repeat;
         background-size: 100% 100%;
         display: flex;
         justify-content: center;
-        align-items:center;
         .item-center {
           width: 240px;
           height: 300px;
@@ -267,8 +334,14 @@ $font-color: white;
           font-size: 15px;
           color: #555;
           box-sizing: border-box;
+          margin-left: 12px;
+          margin-top: -60px;
           p {
-            line-height: 2.0;
+            line-height: 2.5;
+          }
+          a {
+            color: #555;
+            padding-left: 85px;
           }
 
         }

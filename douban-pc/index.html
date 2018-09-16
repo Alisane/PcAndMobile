@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>豆瓣主页</title>
-    <link rel="stylesheet" href="./css/index.css">
+    <title>原生js实现一次滚动一屏</title>
+    <link rel="stylesheet" href="./css/newIndex.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 <body>
 <div class="db-content">
-    <!--豆瓣头部-->
     <header class="db-header">
         <div class="header">
             <div class="header-left">
@@ -16,125 +16,372 @@
                 <span class="header-share">分享给朋友</span>
                 <div class="sharing">
                     <div>
-                        <p>分享到豆瓣</p>
-                        <p>分享到微博</p>
-                        <p>扫码分享到微信</p>
+                        <div>
+                            <a><i class="fa fa-dashcube"></i>分享到豆瓣</a>
+                            <a><i class="fa fa-weibo"></i>分享到微博</a>
+                            <p><i class="fa fa-weixin"></i>扫码分享到微信</p>
+                        </div>
+                        <div>
+                            <img src="./images/logo.png" alt="">
+                        </div>
                     </div>
-                    <div>
-                        <img src="./images/logo.png" alt="">
-                    </div>
+
                 </div>
-                <span> 共20.321，256人访问</span>
+                <span> 共20.321.256人访问</span>
             </div>
             <div class="header-right">
                 <img src="data:image/gif;base64,R0lGODlhHAAcAPABAP///wAAACH5BAkeAAEAIf8LTkVUU0NBUEUyLjADAQAAACH/C0ltYWdlTWFnaWNrDWdhbW1hPTAuNDU0NTUALAAAAAAcABwAAAJPjI+py+0BIngUyvrkxE3zfn2LJypkiZyooaah0x6x+SazXbsRdd/6RttlcjJiEIgTwowWZVKD/DGgzB41WnT+rNosdFq9grss8ShMXqkZBQAh+QQJHgABACH/C0ltYWdlTWFnaWNrDWdhbW1hPTAuNDU0NTUALAAAAAAcABwAAAJGjI+py+0PDZggPlptw3rTznCgIo5IaUrYZ67s6E5pnMHxfLe57eL9gjrtEsEDLfQiDoUy4NKYZK6QTdJTVVX+rFlp6qspAAAh+QQJHgABACH/C0ltYWdlTWFnaWNrDWdhbW1hPTAuNDU0NTUALAAAAAAcABwAAAJQjI+py+1vgAQQTlrdzXrytn1LKCZkeZxooKbe00ZvJzGxOeM1nCO333PtaBjFT1jUXZLAofIGXTqbTGR0ag3KsNulTcuSVrtfaXkc5q7WjAIAOw==" alt="">
-                <span style="width:301px">A l'hombre - Ludovico Einaudi / Ballake Sissoko</span>
+                <span style="width:301px;text-align: center">A l'hombre - Ludovico Einaudi / Ballake Sissoko</span>
                 <audio autoplay loop>
                     <source src="https://mr3.doubanio.com/e210565f261811b8beb833f00357df1b/0/fm/song/p1977748_128k.mp4" type="audio/ogg">
                 </audio>
-                <button class="header-menu">目录</button>
+                <button class="header-menu"><i class="fa fa-align-left"></i>目录</button>
             </div>
         </div>
     </header>
-    <!--豆瓣内容-->
     <div class="db-center">
         <!--首页-->
-        <div class="center-video">
-            <video loop autoplay   >
-                <source src="./images/book_annual.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="center-bgImg"></div>
-        <div class="center-textImg">
-            <img src="./images/textImg.png">
-            <img class="textImg-small" src="./images/book.png">
+        <div class="item">
+            <div class="center-video">
+                <video loop autoplay   >
+                    <source src="./images/book_annual.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="center-bgImg"></div>
+            <div class="center-textImg">
+                <img src="./images/textImg.png">
+                <img class="textImg-small" src="./images/book.png">
+            </div>
+            <div class="center-text">
+                <span>基于2017年你和万千豆瓣用户对读书条目的评分、标记和访问数据 （统计截至2017-12-15）</span>
+            </div>
         </div>
         <!--第二页-->
-        <div class="center-item" style="">
-            <div style=" padding: 20px;margin-right: 20px;width: 500px; display: flex;background-color: rgba(89, 137, 120, 0.8);border-radius: 5px">
-                <div>
-                    <a href="#" arget="_blank">
-                        <img style="width: 150px; height: 220px;" src="./images/second.jpg" alt="">
-                    </a>
-                </div>
-                <div style="padding: 0px 0px 0px 20px;overflow: hidden;flex: 1">
-                    <h1>2017年度</h1>
-                    <h1>高分图书</h1>
-                    <div style="border-top: 1px solid white ;margin: 15px 0px;"></div>
-                    <div>
-                        <h2><span style="margin-top: 7px; display: inline-block;font-size: 1.5rem;font-weight: 400;line-height: 1.5;background: #e58b00;border-radius: 1.5rem;padding: 0 .5rem;margin-bottom: .3rem;margin-right: .5rem;vertical-align: middle;color: #fff; ">Top 1</span><a href="">新名字故事</a></h2>
-                        <span style="margin-top: 7px;">[意] 埃莱娜·费兰特</span>
-                        <div style="margin-top: 7px;"><span style="color:orange">★★★★★</span><span> 9.0</span><span> 965人评价</span></div>
-                        <div style=" line-height: 1.7;margin-top:7px;height: 85px;overflow: hidden"><p>我很真诚的讲：作者用极其扎实的故事告诉了女人们，为什么不能太早结婚以及为什么要坚持上学读书……（一本真正的女性主义小说荞麦</p></div>
+        <div class="item">
+            <div class="item-bgImg second">
+                <div class="item-left">
+                    <div class="item-left-l">
+                        <a href="#" arget="_blank">
+                            <img style="width: 150px; height: 220px;" src="./images/second.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="item-left-r">
+                        <h1>2017年度</h1>
+                        <h1>高分图书</h1>
+                        <div class="splitLine" ></div>
+                        <section>
+                            <header>
+                                <h2><span class="ranking">Top 1</span><a href="">新名字的故事</a></h2>
+                            </header>
+                            <span>[意] 埃莱娜·费兰特</span>
+                            <p><span style="color:orange">★★★★★</span><span> 9.0</span><span> 965人评价</span></p>
+                            <p>我很真诚的讲：作者用极其扎实的故事告诉了女人们，为什么不能太早结婚以及为什么要坚持上学读书……（一本真正的女性主义小说荞麦</p>
+                        </section>
                     </div>
                 </div>
-            </div>
-            <div style="width: 472px;height: 522px;background-color: ;float: left;flex: 0 0 472px;">
-                <ul style="flex-wrap: wrap;justify-content: space-around;align-content: flex-start;">
-                    <li class="li">
-                        <a href="" >
-                            <div style="position: absolute;bottom: 46px;margin-left:15px"><img style="width: 86px; height: 122px;" src="./images/second.jpg" alt=""></div>
-                            <div style="position: absolute;right: 18px;top:3px;font-size: 15px">2</div>
-                            <div style="position: absolute;bottom: 25px;margin-left:15px;font-size: 15px">鱼王 <span>9.0</span></div>
-                        </a>
-                    </li>
-                    <li class="li">
-                        <a href="" >
-                            <div style="position: absolute;bottom: 46px"><img style="width: 86px; height: 122px;" src="./images/second.jpg" alt=""></div>
-                            <div style="position: absolute;right: 3px">2</div>
-                            <div style="position: absolute;bottom: 6px">yuwang </div>
-                        </a>
-                    </li>
-                    <li class="li">
-                        <a href="" >
-                            <div style="position: absolute;bottom: 46px"><img style="width: 86px; height: 122px;" src="./images/second.jpg" alt=""></div>
-                            <div style="position: absolute;right: 3px">2</div>
-                            <div style="position: absolute;bottom: 6px">yuwang </div>
-                        </a>
-                    </li>
-                    <li class="li">
-                        <a href="" >
-                            <div style="position: absolute;bottom: 46px"><img style="width: 86px; height: 122px;" src="./images/second.jpg" alt=""></div>
-                            <div style="position: absolute;right: 3px">2</div>
-                            <div style="position: absolute;bottom: 6px">yuwang </div>
-                        </a>
-                    </li>
-                    <li class="li">
-                        <a href="" >
-                            <div style="position: absolute;bottom: 46px"><img style="width: 86px; height: 122px;" src="./images/second.jpg" alt=""></div>
-                            <div style="position: absolute;right: 3px">2</div>
-                            <div style="position: absolute;bottom: 6px">yuwang </div>
-                        </a>
-                    </li>
-                    <li class="li">
-                        <a href="" >
-                            <div style="position: absolute;bottom: 46px"><img style="width: 86px; height: 122px;" src="./images/second.jpg" alt=""></div>
-                            <div style="position: absolute;right: 3px">2</div>
-                            <div style="position: absolute;bottom: 6px">yuwang </div>
-                        </a>
-                    </li>
-                    <li class="li">
-                        <a href="" >
-                            <div style="position: absolute;bottom: 46px"><img style="width: 86px; height: 122px;" src="./images/second.jpg" alt=""></div>
-                            <div style="position: absolute;right: 3px">2</div>
-                            <div style="position: absolute;bottom: 6px">yuwang </div>
-                        </a>
-                    </li>
-                    <li class="li">
-                        <a href="" >
-                            <div style="position: absolute;bottom: 46px"><img style="width: 86px; height: 122px;" src="./images/second.jpg" alt=""></div>
-                            <div style="position: absolute;right: 3px">2</div>
-                            <div style="position: absolute;bottom: 6px">yuwang </div>
-                        </a>
-                    </li>
-
-                </ul>
+                <div class="item-right">
+                    <ul class="item-right-ul">
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two1.jpg" alt=""></div>
+                                <div>2</div>
+                                <p>鱼王 </p>
+                                <p>9.0</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two2.jpg" alt=""></div>
+                                <div>3</div>
+                                <p>不可思议的朋友 </p>
+                                <p>9.0</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two3.jpg" alt=""></div>
+                                <div>4</div>
+                                <p>杀死一只知更鸟</p>
+                                <p>9.2</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two4.jpg" alt=""></div>
+                                <div>5</div>
+                                <p>步履不停 </p>
+                                <p>8.7</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two5.jpg" alt=""></div>
+                                <div>6</div>
+                                <p>长夜难明</p>
+                                <p>8.6</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two6.jpg" alt=""></div>
+                                <div>7</div>
+                                <p>小说课 </p>
+                                <p>8.6</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div style=""><img style="width: 86px; height: 122px;" src="./images/two7.jpg" alt=""></div>
+                                <div style="">8</div>
+                                <p>外婆的道歉信 </p>
+                                <p>8.0</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div style=""><img style="width: 86px; height: 122px;" src="./images/two8.jpg" alt=""></div>
+                                <div style="">9</div>
+                                <p>我的职业是小说家 </p>
+                                <p>8.3</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div style=""><img style="width: 86px; height: 122px;" src="./images/two9.jpg" alt=""></div>
+                                <div style="">10</div>
+                                <p>世界的凛冬</p>
+                                <p>8.9</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item-comment">
+                    <div>
+                        <form action="">
+                         <input type="text" placeholder="发表一下你的看法">
+                        </form>
+                    </div>
+                    <span>共635条评论</span>
+                </div>
             </div>
         </div>
-
+        <!--第三页-->
+        <div class="item">
+            <div class="item-bgImg tired">
+                <div class="item-center">
+                    <p>
+                        <span style="background: #B6BABD">这个世
+                            界上的每样东西都生死未定，都充满了风险
+                            ，那些不接受风险的人，那些不了解命运的
+                            人，在角落里日渐衰落。
+                        </span>
+                        我忽然明白为什么我没能拥有尼诺，而莉拉能够拥有他。我不能追随那些真实的感情，我无法使自己打破陈规旧矩
+                        ，我没有莉拉那么强烈的情感，她可以不顾一切去享受那一天一夜。
+                        <a href="">—— 《新名字的故事》</a>
+                    </p>
+                </div>
+                <div class="item-comment">
+                    <div>
+                        <form action="">
+                            <input type="text" placeholder="发表一下你的看法">
+                        </form>
+                    </div>
+                    <span>共635条评论</span>
+            </div>
+            </div>
+         </div>
+        <!--第四页-->
+        <div class="item">
+            <div class="item-bgImg fourth">
+                <div class="item-left">
+                    <div class="item-left-l">
+                        <a href="#" arget="_blank">
+                            <img style="width: 150px; height: 220px;" src="./images/tired.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="item-left-r">
+                        <h1>2017年度</h1>
+                        <h1>外国文学（小说类）</h1>
+                        <div class="splitLine" ></div>
+                        <section>
+                            <header>
+                                <h2><span class="ranking">Top 1</span><a href="">独木神经</a></h2>
+                            </header>
+                            <span>[美] 芭芭拉·金索沃</span>
+                            <p><span style="color:orange">★★★★</span><span>★</span><span> 8.7</span><span> 856人评价</span></p>
+                            <p>沉重而惊艳的作品。世上没有正义可言，所有对岸的生命，本都可以自在地生活。干预和教化或许不仅是徒劳，甚至也是罪孽。</p>
+                        </section>
+                    </div>
+                </div>
+                <div class="item-right">
+                    <ul class="item-right-ul">
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two1.jpg" alt=""></div>
+                                <div>2</div>
+                                <p>鱼王 </p>
+                                <p>9.0</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two2.jpg" alt=""></div>
+                                <div>3</div>
+                                <p>不可思议的朋友 </p>
+                                <p>9.0</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two3.jpg" alt=""></div>
+                                <div>4</div>
+                                <p>杀死一只知更鸟</p>
+                                <p>9.2</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two4.jpg" alt=""></div>
+                                <div>5</div>
+                                <p>步履不停 </p>
+                                <p>8.7</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two5.jpg" alt=""></div>
+                                <div>6</div>
+                                <p>长夜难明</p>
+                                <p>8.6</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div><img style="width: 86px; height: 122px;" src="./images/two6.jpg" alt=""></div>
+                                <div>7</div>
+                                <p>小说课 </p>
+                                <p>8.6</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div style=""><img style="width: 86px; height: 122px;" src="./images/two7.jpg" alt=""></div>
+                                <div style="">8</div>
+                                <p>外婆的道歉信 </p>
+                                <p>8.0</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div style=""><img style="width: 86px; height: 122px;" src="./images/two8.jpg" alt=""></div>
+                                <div style="">9</div>
+                                <p>我的职业是小说家 </p>
+                                <p>8.3</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" >
+                                <div style=""><img style="width: 86px; height: 122px;" src="./images/two9.jpg" alt=""></div>
+                                <div style="">10</div>
+                                <p>世界的凛冬</p>
+                                <p>8.9</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item-comment">
+                    <div>
+                        <form action="">
+                            <input type="text" placeholder="发表一下你的看法">
+                        </form>
+                    </div>
+                    <span>共635条评论</span>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
 
 </body>
+<script src="./lib/jquery-2.1.4.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded",function () {
+        var body = document.body;
+        var html = document.documentElement;
+        var itv,height = document.body.offsetHeight;
+        var page = scrollTop() / height | 0;
+        addEventListener("resize",onresize,false);
+        onresize();
+
+        //鼠标滚轮事件
+        document.body.addEventListener("onwheel" in document ? "wheel" : "mousewheel",function (e) {
+            clearTimeout(itv);
+            itv = setTimeout(function () {
+                //判断滚轮滚的方向
+                var delta = e.wheelDelta / 120 || -e.deltaY / 3;
+                page -= delta;
+                var max = (document.body.scrollHeight / height | 0) -1;
+                if (page < 0){
+                    return page = 0;
+                }
+                if (page > max){
+                    return page = max;
+                }
+                move();
+            },500);
+            e.preventDefault();
+        });
+        //当窗体发生变化时还是保证每次滚动滚一屏
+        function  onresize() {
+            height = body.offsetHeight;
+            move();
+        };
+
+        function  move() {
+            var value = height * page;
+            var diff = scrollTop() - value;
+            (function callee() {
+                diff = diff / 1.2 | 0;
+                scrollTop(value + diff);
+                if (diff){
+                    itv = setTimeout(callee,16);
+                }
+            })();
+        };
+
+        function scrollTop(v) {
+            if (v == null){
+                return Math.max(body.scrollTop,html.scrollTop);
+            }else{
+                body.scrollTop = html.scrollTop = v;
+            }
+        }
+    })
+    $(document).ready(function(){
+        $(".header-share").mouseenter(function(){
+            $(".sharing").css("display","block");
+        });
+        $(".header-left").mouseleave(function(){
+            $(".sharing").css("display","none");
+        });
+//        $(".header-right").mouseenter(function () {
+//           $(".header-right>img").attr("src","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAYCAYAAADpnJ2CAAAABGdBTUEAALGPC/xhBQAAAF1JREFUSA3tlcEKACAIQzX8/1+ujrLLEMXTPDWyiU8kt2LcH/mJ/8ianQ9LmL5XwWmiJqTjSGPcEQxxbzVDANSXQtpnCA7rSAP3pPq/QQNUrneognQm1QQhrRKj+Q9prwww1XTWTQAAAABJRU5ErkJggg==");
+//           $(".header-right span").text("关闭背景音乐");
+//        });
+//        $(".header-right").mouseleave(function () {
+//            $(".header-right>img").attr("src","data:image/gif;base64,R0lGODlhHAAcAPABAP///wAAACH5BAkeAAEAIf8LTkVUU0NBUEUyLjADAQAAACH/C0ltYWdlTWFnaWNrDWdhbW1hPTAuNDU0NTUALAAAAAAcABwAAAJPjI+py+0BIngUyvrkxE3zfn2LJypkiZyooaah0x6x+SazXbsRdd/6RttlcjJiEIgTwowWZVKD/DGgzB41WnT+rNosdFq9grss8ShMXqkZBQAh+QQJHgABACH/C0ltYWdlTWFnaWNrDWdhbW1hPTAuNDU0NTUALAAAAAAcABwAAAJGjI+py+0PDZggPlptw3rTznCgIo5IaUrYZ67s6E5pnMHxfLe57eL9gjrtEsEDLfQiDoUy4NKYZK6QTdJTVVX+rFlp6qspAAAh+QQJHgABACH/C0ltYWdlTWFnaWNrDWdhbW1hPTAuNDU0NTUALAAAAAAcABwAAAJQjI+py+1vgAQQTlrdzXrytn1LKCZkeZxooKbe00ZvJzGxOeM1nCO333PtaBjFT1jUXZLAofIGXTqbTGR0ag3KsNulTcuSVrtfaXkc5q7WjAIAOw==");
+//            $(".header-right span").text("A l'hombre - Ludovico Einaudi / Ballake Sissoko");
+//        });
+        $(".header-right").click(function () {
+            console.log("hjhj");
+            $(".header-right audio").removeAttr("autoplay").attr("control");
+            $(".header-right audio").removeAttr("loop").attr("muted");
+
+            $(".header-right>img").attr("src","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAYCAYAAADpnJ2CAAAABGdBTUEAALGPC/xhBQAAAF1JREFUSA3tlcEKACAIQzX8/1+ujrLLEMXTPDWyiU8kt2LcH/mJ/8ianQ9LmL5XwWmiJqTjSGPcEQxxbzVDANSXQtpnCA7rSAP3pPq/QQNUrneognQm1QQhrRKj+Q9prwww1XTWTQAAAABJRU5ErkJggg==");
+
+        })
+    });
+
+
+</script>
 </html>
